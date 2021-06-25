@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Col } from "reactstrap";
+import { Col } from "reactstrap";
 import {
   DropdownSelectGender,
   DropdownSelectLoan,
@@ -9,7 +9,6 @@ import {
 } from "../components/dropDownItems";
 import InputFields from "../components/inputFields";
 import FormButtons from "../components/formButtons";
-import HomePage from "./HomePage";
 import Header from "../components/Header";
 
 function FormPage() {

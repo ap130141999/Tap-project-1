@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  Navbar,
   Card,
   CardBody,
   Button,
-  NavbarBrand,
-  NavbarText,
   CardImg,
   Container,
   CardHeader,
@@ -14,6 +11,7 @@ import {
   Row,
 } from "reactstrap";
 import Header from "../components/Header";
+import FormPage from "./FormPage";
 
 const HomePage = () => {
   return (
@@ -23,7 +21,7 @@ const HomePage = () => {
         <Row>
           <Col md="3" style={{ textAlign: "center" }}>
             <Card>
-              <CardHeader tag="h6">Byjus Nache</CardHeader>
+              <CardHeader tag="h6">Byjus Nach</CardHeader>
               <CardBody className="">
                 <CardImg
                   top

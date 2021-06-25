@@ -12,7 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/Form" component={FormPage} />
+        <Route exact path="/Form" component={ FormPage } />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

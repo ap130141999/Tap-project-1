@@ -8,7 +8,6 @@ function Header() {
         Byjus Pay
       </NavbarBrand>
       <form className="d-flex w-auto">
-        <NavbarText>Simple Text</NavbarText>
       </form>
     </Navbar>
   );
