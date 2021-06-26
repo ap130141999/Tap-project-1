@@ -1,124 +1,152 @@
-import { Row, Col, Form, Input, Label, FormGroup } from "reactstrap";
-import React from "react";
+import { Col, Form, Input, Label, FormGroup } from "reactstrap";
+import React, { useState } from "react";
+import Helmet from "react-helmet";
+// import { use } from "../../../server/routes/enumRoutes";
+
+<Helmet bodyAttributes={{ style: "background-color : red" }} />;
 function InputFields() {
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [middlename , setMiddlename] = useState('');
+  const [phone, setPhone] = useState('');
+  const [country,setCountry] = useState('');
+  const [loan, setLoan] = useState('');
+
   return (
     <Form>
       <div>
-        <Row>
-          <FormGroup row>
-            <Label for="FirstName" sm={2}>
-              FirstName
-            </Label>
-            <Col sm={6}>
-              <Input
-                type="text"
-                name="FirstName"
-                id="FirstName"
-                placeholder="Enter your first name"
-                required
-              />
-            </Col>
-          </FormGroup>
-          <br></br>
-          <FormGroup row>
-            <Label for="MiddleName" sm={2}>
-              MiddleName
-            </Label>
-            <Col sm={6}>
-              <Input
-                type="text"
-                name="MiddleName"
-                id="MiddleName"
-                placeholder="Enter your Middle name"
-              />
-            </Col>
-          </FormGroup>
-          <br></br>
-        </Row>
         <FormGroup row>
-          <Label for="LastName" sm={2}>
-            LastName
+          <Label for="FirstName" md={2} >
+            <h5> First Name </h5>
           </Label>
-          <Col sm={6}>
+          <Col md={4}>
             <Input
+              style={{ backgroundColor: "white" }}
               type="text"
-              name="LastName"
-              id="LastName"
-              placeholder="Enter your last name"
+              name="FirstName"
+              id="FirstName"
+              placeholder="Enter your first name"
+              required
+              onChange={(event) => setFirstname(event.target.value)}
+            />
+          </Col>
+          {/* </FormGroup> */}
+          <br></br>
+
+          {/* <FormGroup row> */}
+          <Label for="MiddleName" md={2}>
+            <h5> Middle Name</h5>
+          </Label>
+          <Col md={4}>
+            <Input
+              style={{ backgroundColor: "white" }}
+              type="text"
+              name="MiddleName"
+              id="MiddleName"
+              placeholder="Enter your Middle name"
+              onChange={(event) => setMiddlename(event.target.value)}
             />
           </Col>
         </FormGroup>
       </div>
       <br></br>
+
       <FormGroup row>
-        <Label for="PhoneNo" sm={2}>
-          PhoneNumber
+        <Label for="Last Name" md={2}>
+          <h5> Last Name</h5>
         </Label>
-        <Col sm={6}>
+        <Col md={4}>
           <Input
-            type="number"
+            style={{ backgroundColor: "white" }}
+            type="text"
+            name="LastName"
+            id="LastName"
+            placeholder="Enter your last name"
+            onChange={(event) => setLastname(event.target.value)}
+          />
+        </Col>
+        {/* </FormGroup> */}
+
+        <br></br>
+
+        {/* <FormGroup row> */}
+        <Label for="PhoneNo" md={2}>
+          <h5> Phone No</h5>
+        </Label>
+        <Col md={4}>
+          <Input
+            style={{ backgroundColor: "white" }}
+            type="text"
             name="MobileNumber"
             id="PhoneNo"
             placeholder="Enter phone number"
+            onChange={(event) => setPhone(event.target.value)}
           />
         </Col>
       </FormGroup>
-      <br></br>
-      <FormGroup row>
-        <Label for="exampleEmail" sm={2}>
-          Email
+
+      {/* <FormGroup row>
+        <Label for="exampleEmail" md={3}>
+        <h4>   Email</h4> 
         </Label>
-        <Col sm={6}>
-          <Input
+        <Col md={3}>
+          <Input style={{backgroundColor:"white"}}
             type="email"
             name="email"
             id="exampleEmail"
             placeholder="Enter your email address"
           />
-        </Col>
-      </FormGroup>
+        </Col> */}
+      {/* </FormGroup> */}
       <br></br>
-      <FormGroup row>
-        <Label for="Address" sm={2}>
-          Address
+
+      {/* <FormGroup row> */}
+      {/* <Label for="Address" md={3}>
+        <h4>  Address</h4> 
         </Label>
-        <Col sm={10}>
-          <Input
+        <Col md={3}>
+          <Input style={{backgroundColor:"white"}}
             type="text"
             name="Address"
             id="Address"
             placeholder="Enter your address"
           />
         </Col>
-      </FormGroup>
-      <br></br>
+      </FormGroup> */}
+
       <FormGroup row>
-        <Label for="Country" sm={2}>
-          Country
+        <Label for="Country" md={2}>
+          <h5> Country:</h5>
         </Label>
-        <Col sm={6}>
+        <Col md={4}>
           <Input
+            style={{ backgroundColor: "white" }}
             type="text"
             name="Country"
             id="Country"
             placeholder="Enter your country"
+            onChange={(event) => setCountry(event.target.value)}
+          />
+        </Col>
+        {/* </FormGroup> */}
+        <br></br>
+
+        {/* <FormGroup row> */}
+        <Label for="Loan Amount" md={2}>
+          <h5> Loan Amount</h5>
+        </Label>
+        <Col md={4}>
+          <Input
+            style={{ backgroundColor: "white" }}
+            type="text"
+            name="LoanAmount"
+            id="Loan Amount"
+            placeholder="Enter the loan amount"
+            onChange={(event) => setLoan(event.target.value)}
           />
         </Col>
       </FormGroup>
       <br></br>
-      <FormGroup row>
-        <Label for="Loan Amount" sm={2}>
-          Loan Amount
-        </Label>
-        <Col sm={6}>
-          <Input
-            type="number"
-            name="LoanAmount"
-            id="Loan Amount"
-            placeholder="Enter the loan amount"
-          />
-        </Col>
-      </FormGroup>
     </Form>
   );
 }

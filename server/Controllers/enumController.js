@@ -1,8 +1,9 @@
 const { MongoClient } = require("mongodb");
 const express = require("express");
 require("dotenv").config();
+const bodyParser = require('body-parser');
 
-const port = 4000;
+// const port = 4000;
 const dbName = "credit_guardians";
 const collectionName = "dynamic_enum";
 const app = express();
@@ -33,7 +34,7 @@ const findAllEnums = async (req, res) => {
 
 // }
 const insertEnums = async (req, res) => {
-  const { enumId, optionValues } = req.body[0];
+  const { enumId, optionValues } = req.body;
   const { label, value } = optionValues;
   // console.log(req.body.optionValues);
   // console.log(req.body);
@@ -75,7 +76,7 @@ const updateEnum = async (req, res) => {
     // optionValues.map(async (ele) => {
     //   dbResponse = await collection.updateOne({enumId},{$push:{optionValues:{label:ele.label,value:ele.value}}});
     // })
-    dbResponse = await collection.updateOne({ enumId }, { $push: { optionValues:  {$each : optionValues}  } });
+    dbResponse = await collection.updateOne({ enumId }, { $push: { optionValues: { $each: optionValues } } });
     console.log(JSON.stringify(dbResponse.result));
     res.send(JSON.stringify(dbResponse.result));
     console.log(dbResponse);
@@ -84,6 +85,11 @@ const updateEnum = async (req, res) => {
 
 }
 
+const delEnum = async(req,res) => {
+  const { enumId, optionValues } = req.body;
+  const collection = client.db(dbName).collection(collectionName);
+  const response = await collection.deleteOne({enumId});
+}
 
 
 
@@ -95,4 +101,78 @@ const connectToDatabase = async () => {
 
 connectToDatabase();
 
-module.exports = { findAllEnums, connectToDatabase, insertEnums, updateEnum };
+
+
+
+
+
+
+// const mongoose = require('mongoose');
+// // mongoose.connect = require('mongoose');
+// mongoose.connect(process.env.MO_URI);
+// var db = mongoose.connection;
+
+// db.on('error', console.log.bind(console, "connection error"));
+// db.once('open', function(callback){
+//     console.log("connection succeeded");
+// })
+
+// var app=express()
+
+
+// app.use(bodyParser.json());
+// app.use(express.static('public'));
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
+
+const trialPost = async (req, res) => {
+  // app.post('/sign_up', function(req,res)
+  // {
+
+  // console.log(req.body);
+  const email = req.body.email;
+  const pass = req.body.pass;
+  const address = req.body.address;
+  const city = req.body.city;
+  const state = req.body.state;
+  const zip = req.body.zip;
+
+  console.log(email,pass,address,city,state,zip);
+
+  //  const {email,pass,address,city,State,zip} = req.body;
+  const data = {
+    // "name": name,
+    "email": email,
+    "password": pass,
+    "address": address,
+    "zip": zip,
+    "state": state,
+    "city": city
+  }
+  // const collection = client.db('credit_guardians').collection('details');
+  // const dbResponse = await collection.insertOne(data);
+
+  // res.send(JSON.stringify(dbResponse.result));
+  
+  // }
+  // app.post('/signup', async (req, res) => {
+    // const { email, pass, address, zip,state,city } = req.body;
+    // const collection = client.db('details_db').collection('details');
+    // const response = await collection.insertOne(data);
+    res.send(JSON.stringify(response.result));
+
+// console.log(response);
+console.log("server listening at port 3000");
+}
+
+const findAllDetails = async (req, res) => {
+  const collection = client.db('details_db').collection('details');
+  const response = await collection.find({}).toArray();
+  console.log(response);
+  res.send(JSON.stringify(response));
+  // console.log(JSON.stringify(response));
+};
+
+
+module.exports = { findAllEnums, connectToDatabase, insertEnums, updateEnum, trialPost, findAllDetails, delEnum};

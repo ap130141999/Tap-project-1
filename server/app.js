@@ -1,12 +1,13 @@
 require("dotenv").config();
 
-const createError = require("http-errors");
+// const createError = require("http-errors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require('cors');
-
+const bodyParser = require("body-parser");
 
 const enumRouter = require("./routes/enumRoutes");
+
 
 const app = express();
 
@@ -41,3 +42,9 @@ app.use((err, req, res, next) => {
 app.listen(3001, () => {
   console.log(`Server is running!`);
 });
+
+
+
+
+
+

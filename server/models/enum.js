@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-const enumSchema = new mongoose.Schema({
+var enumSchema = new mongoose.Schema({
   enumId: {
     type: String,
     required: true
@@ -10,7 +10,14 @@ const enumSchema = new mongoose.Schema({
       type : Array,
       required : true
   },
+  label :{
+    type : String
+  },
+  value : {
+    type : String
+  }
   
 });
 
-module.exports = Enum = mongoose.model('enum', enumSchema);
+// module.exports = Enum = mongoose.model('enum', enumSchema);
+module.exports = enumSchema;

@@ -1,9 +1,8 @@
 import "./App.css";
-import { Container, Col } from "reactstrap";
-
-
+import { Container } from "reactstrap";
 import FormPage from "./pages/FormPage";
 import HomePage from "./pages/HomePage";
+import TrialFormPage from "./components/trialIputFields";
 
 export function App() {
   return (
@@ -11,9 +10,20 @@ export function App() {
       <Container>
         <HomePage />
         <FormPage />
+        <TrialFormPage />
+
       </Container>
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
 
 export default App;

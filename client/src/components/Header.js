@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, NavbarBrand, NavbarText } from "reactstrap";
+import { Navbar, NavbarBrand} from "reactstrap";
 
 function Header() {
   return (
@@ -7,10 +7,11 @@ function Header() {
       <NavbarBrand href="/" style={{ color: "#ffff" }}>
         Byjus Pay
       </NavbarBrand>
-      <form className="d-flex w-auto">
-      </form>
+      <form className="d-flex w-auto"></form>
     </Navbar>
   );
 }
 
 export default Header;
+
+
