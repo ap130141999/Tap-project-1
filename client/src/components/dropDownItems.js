@@ -29,6 +29,7 @@ export const DropdownSelectGender = ({optionHandler}) => {
     setCurrentGender(event.value);
     setCurrentGender(event.label);
     optionHandler(event.label);
+    console.log(event.label,"bye");
   };
   
 

@@ -80,8 +80,8 @@ const findAllDetails = async (req, res) => {
 
 
 const insertData = async (req,res)=> {
-  const {firstname,lastname,middlename,phone,country,loan} = req.body;
-  console.log(req.body);
+  const {firstname,lastname,middlename,phone,country,loan,gender} = req.body;
+  console.log(gender,"hello");
   const collection = client.db('details_db').collection('details');
   const data = {
       firstname:firstname,
@@ -89,7 +89,8 @@ const insertData = async (req,res)=> {
       middlename:middlename,
       phone:phone,
       country:country,
-      loan:loan 
+      loan:loan ,
+      gender:gender
       
   }
   const response = await collection.insertOne(data);

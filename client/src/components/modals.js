@@ -16,11 +16,21 @@ import {
 } from "reactstrap";
 
 const EnumModal = (props) => {
-  const { showModal, enumId, oV } = props;
+  let { showModal, enumId, oV } = props;
   const [input, setInput] = useState("");
   const [show, setShow] = useState(false);
+ 
+  // const toggle = (Id, val) => {
+    // console.log("ID", Id, "Value", val);
+    // const edit = async () =>
+    //   await axios.put(`http://localhost:3001/enum/update`, {
+    //     enumId: Id,
+    //     optionValues: [{ value: val, label: val }],
+    //   });
 
-  const toggle = (Id, val) => {
+    // edit();
+  // };
+  const updateValues =(Id,val) => {
     console.log("ID", Id, "Value", val);
     const edit = async () =>
       await axios.put(`http://localhost:3001/enum/update`, {
@@ -29,7 +39,8 @@ const EnumModal = (props) => {
       });
 
     edit();
-  };
+  }
+  const toggle = () => showModal = (!showModal);
 
   const dropChange = (event, label) => {};
 
@@ -85,7 +96,7 @@ const EnumModal = (props) => {
           <Button type = "submit"
             color="success"
             onClick={() => {
-              toggle(enumId, input);
+              updateValues(enumId, input);
             }}
           >
             Add

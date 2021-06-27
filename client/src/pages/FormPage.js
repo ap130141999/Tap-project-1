@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import axios from "axios";
-import { Container, Col,Row  ,Card,CardBody} from "reactstrap";
+import { Container, Col, Row, Card, CardBody } from "reactstrap";
 import { useState } from "react";
 import {
   DropdownSelectGender,
@@ -16,70 +16,84 @@ import FormButtons from "../components/formButtons";
 import Header from "../components/Header";
 // import HomePage from "./HomePage";
 
-
-
-
 const FormPage = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [middlename , setMiddlename] = useState('');
-  const [phone, setPhone] = useState('');
-  const [country,setCountry] = useState('');
-  const [loan, setLoan] = useState('');
+  const [middlename, setMiddlename] = useState("");
+  const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState("");
+  const [loan, setLoan] = useState("");
+  const [gender, setGender] = useState("");
 
-      const submitData = async() => { 
-        console.log(firstname,middlename,lastname,country,loan,phone,"sending through");
-      const response = await axios.post(`http://localhost:3001/enum/add`,
-       {
-        firstname:firstname,lastname:lastname,middlename:middlename,phone:phone,country:country,loan:loan
-      }
-     );
-      }
+  const submitData = async () => {
+    console.log(
+      firstname,
+      middlename,
+      lastname,
+      country,
+      loan,
+      phone,
+      "sending through"
+    );
 
-     const getfirstName = (value) => {
-       console.log(value);
-       setFirstname(value);
-     };
-     const getMiddleName = (value) => {
-      console.log(value);
-      setMiddlename(value);
-    };
-    const getLastName = (value) => {
-      console.log(value);
-      setLastname(value);
-    };
-    const getPhone = (value) => {
-      console.log(value);
-      setPhone(value);
-    };
-    const getCountry = (value) => {
-      console.log(value);
-      setCountry(value);
-    };
-    const getLoan = (value) => {
-      console.log(value);
-      setLoan(value);
-    };
+    // const g1 = op[0].value;
+    // const g2 = op[0].label;
+    let bodyPayload = { firstname: firstname,
+      lastname: lastname,
+      middlename: middlename,
+      phone: phone,
+      country: country,
+      loan: loan,
+      gender : gender
+    }
+    // bodyPayload[ `${g1}`] = g2;
+    console.log(bodyPayload,"hi");
+    const response = await axios.post(`http://localhost:3001/enum/add`,bodyPayload);
+  };
 
-    // const getGender = () => {
+  const getfirstName = (value) => {
+    console.log(value);
+    setFirstname(value);
+  };
+  const getMiddleName = (value) => {
+    console.log(value);
+    setMiddlename(value);
+  };
+  const getLastName = (value) => {
+    console.log(value);
+    setLastname(value);
+  };
+  const getPhone = (value) => {
+    console.log(value);
+    setPhone(value);
+  };
+  const getCountry = (value) => {
+    console.log(value);
+    setCountry(value);
+  };
+  const getLoan = (value) => {
+    console.log(value);
+    setLoan(value);
+  };
 
-    // }
+  // const getGender = () => {
 
-      const [op, setOP] = useState([]);
-      const dropDownHandler = (option, label) => {
-        console.log("Hi option here", label, option);
-        setOP([...op, { label: label, val: option }]);
-      };
-    
-      console.log("All", op.map(el => {
-        console.log(el.val)
-      }));
-    
+  // }
 
-  
+  const dropDownHandler = (label) => {
+    console.log("Hi option here", label);
+    setGender(label);
+  };
+
+  // console.log(
+  //   "All",
+  //   op.map((el) => {
+  //     console.log(el.val);
+  //   })
+  // );
+
   return (
     <main>
-
       <Header />
       <Container className="mb-4">
         <Card style={{ boxShadow: "5px 5px 5px grey" }}>
@@ -100,36 +114,38 @@ const FormPage = () => {
           }}
         >
           <br></br>
-          <InputFields sendFirstName={getfirstName} 
-       sendMiddleName={getMiddleName} 
-       sendLastName={getLastName} 
-         sendPhone={getPhone} 
-      sendCountry={getCountry}
-      sendLoan={getLoan} />
-      
+          <InputFields
+            sendFirstName={getfirstName}
+            sendMiddleName={getMiddleName}
+            sendLastName={getLastName}
+            sendPhone={getPhone}
+            sendCountry={getCountry}
+            sendLoan={getLoan}
+          />
+
           <Row>
             <Col md="6">
-              <DropdownSelectGender optionHandler = {dropDownHandler} />
+              <DropdownSelectGender optionHandler={dropDownHandler} />
             </Col>
             <Col md="6">
-              <DropdownSelectLoan optionHandler = {dropDownHandler}/>
+              <DropdownSelectLoan  />
             </Col>
           </Row>
           <Row>
             <Col md="6">
-              <DropdownSelectEmplyoment optionHandler = {dropDownHandler} />
+              <DropdownSelectEmplyoment />
             </Col>
             <Col md="6">
-              <DropdownSelectMartial optionHandler = {dropDownHandler}/>
+              <DropdownSelectMartial  />
             </Col>
           </Row>
           <Row>
             <Col md="6">
-              <DropdownSelectEducation optionHandler = {dropDownHandler}/>
+              <DropdownSelectEducation  />
             </Col>
           </Row>
 
-          <FormButtons buttonClick={submitData}  />
+          <FormButtons buttonClick={submitData} />
         </Card>
       </Container>
       {/* <InputFields sendFirstName={getfirstName} 
@@ -138,10 +154,8 @@ const FormPage = () => {
          sendPhone={getPhone} 
       sendCountry={getCountry}
       sendLoan={getLoan} /> */}
-     
-      
     </main>
   );
-}
+};
 
 export default FormPage;

@@ -2,13 +2,16 @@ import axios from "axios";
 import { Table, Button, Container, Card } from "reactstrap";
 import { useEffect, useState } from "react";
 import React from "react";
-import EnumModal from "../components/modals";
-import Header from "../components/Header";
-import "../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
+import EnumModal from "../components/modals";
+import Header from "../components/Header";
+
+import "../index.css";
+
 const DynamicTable = (props) => {
+
   const [tableData, setTableData] = useState([]);
   useEffect(() => {
     getEnum();
@@ -17,20 +20,24 @@ const DynamicTable = (props) => {
   const [tableId, setTabelId] = useState("");
   const [value, setValue] = useState([]);
   const [closeModal, setCloseModal] = useState();
+
   const AddModal = (enumId, value) => {
     setTabelId(enumId);
     setValue(value);
     console.log("Enum :", enumId);
     setShowModal(true);
   };
+
   const modelHandle = (ans) => {
     setShowModal(ans);
   };
+
   const getEnum = async () => {
     const response = await axios.get(`http://localhost:3001/enum/get`);
     setTableData(response.data);
     console.log(response.data);
   };
+
   return (
     <>
       <Header />
@@ -102,4 +109,5 @@ const DynamicTable = (props) => {
     </>
   );
 };
+
 export default DynamicTable;

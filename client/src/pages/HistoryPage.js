@@ -38,6 +38,7 @@ const HistoryPage = () => {
                       <CardText> Phone      : {data.phone} </CardText>
                       <CardText>Country     : {data.country} </CardText>
                       <CardText> Loan       : {data.loan} </CardText>
+                      <CardText>Gender :   {data.gender}</CardText> 
 
 
 
