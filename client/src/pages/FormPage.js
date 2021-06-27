@@ -2,9 +2,7 @@ import React from "react";
 import "../App.css";
 import axios from "axios";
 
-
-
-import { Container, Col,Row  ,Card,CardBody} from "reactstrap";
+import { Container, Col, Row, Card, CardBody } from "reactstrap";
 import {
   DropdownSelectGender,
   DropdownSelectLoan,
@@ -17,22 +15,35 @@ import FormButtons from "../components/formButtons";
 // import HomePage from "./HomePage";
 import Header from "../components/Header";
 
-
-
 function FormPage() {
-  const toggle = (firstname,lastname,middlename,phone,country,loan) => {
+  const toggle = (firstname, lastname, middlename, phone, country, loan) => {
     // console.log("ID", Id, "Value", val);
     const edit = async () =>
       await axios.put(`http://localhost:3001/enum/update`, {
-        firstname:firstname,lastname:lastname,middlename:middlename,phone:phone,country:country,loan:loan 
+        firstname: firstname,
+        lastname: lastname,
+        middlename: middlename,
+        phone: phone,
+        country: country,
+        loan: loan,
       });
 
     edit();
   };
-  
+
   return (
     <main>
       <Header />
+      <Container className="mb-4">
+        <Card style={{ boxShadow: "5px 5px 5px grey" }}>
+          <CardBody
+            className="text-center "
+            style={{ backgroundColor: "#9d4edd", color: "white" }}
+          >
+            <p> LOAN APPLICATION FORM </p>
+          </CardBody>
+        </Card>
+      </Container>
       <Container>
         <Card
           style={{
@@ -41,14 +52,6 @@ function FormPage() {
             boxShadow: "5px 5px 5px 5px lightgrey",
           }}
         >
-          <Card style={{ boxShadow: "5px 5px 5px grey" }}>
-            <CardBody
-              className="text-center fontstyle"
-              style={{ backgroundColor: "#ECDBBA" }}
-            >
-              <h3> LOAN APPLICATION FORM </h3>
-            </CardBody>
-          </Card>
           <br></br>
           <InputFields />
           <Row>
