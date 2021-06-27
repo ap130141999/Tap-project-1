@@ -81,6 +81,16 @@ const FormPage = () => {
     <main>
 
       <Header />
+      <Container className="mb-4">
+        <Card style={{ boxShadow: "5px 5px 5px grey" }}>
+          <CardBody
+            className="text-center "
+            style={{ backgroundColor: "#9d4edd", color: "white" }}
+          >
+            <p> LOAN APPLICATION FORM </p>
+          </CardBody>
+        </Card>
+      </Container>
       <Container>
         <Card
           style={{
@@ -89,14 +99,6 @@ const FormPage = () => {
             boxShadow: "5px 5px 5px 5px lightgrey",
           }}
         >
-          <Card style={{ boxShadow: "5px 5px 5px grey" }}>
-            <CardBody
-              className="text-center fontstyle"
-              style={{ backgroundColor: "#ECDBBA" }}
-            >
-              <h3> LOAN APPLICATION FORM </h3>
-            </CardBody>
-          </Card>
           <br></br>
           <InputFields sendFirstName={getfirstName} 
        sendMiddleName={getMiddleName} 

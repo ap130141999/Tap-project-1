@@ -1,8 +1,7 @@
-import { Col, Form, Input, Label, FormGroup } from "reactstrap";
+import { Col, Form, Input, Label, FormGroup, FormText } from "reactstrap";
 import React, { useState } from "react";
 import Helmet from "react-helmet";
 // import { use } from "../../../server/routes/enumRoutes";
-
 <Helmet bodyAttributes={{ style: "background-color : red" }} />;
 const InputFields =  (props) => {
   const {sendFirstName,sendMiddleName,sendLastName,sendLoan,sendPhone,sendCountry}= props;
@@ -17,11 +16,12 @@ const InputFields =  (props) => {
     <Form>
       <div>
         <FormGroup row>
-          <Label for="FirstName" md={2} >
+          <Label for="FirstName" md={2}>
             <h5> First Name </h5>
           </Label>
           <Col md={4}>
             <Input
+              required
               style={{ backgroundColor: "white" }}
               type="text"
               name="FirstName"
@@ -33,7 +33,6 @@ x              onChange={(event) => sendFirstName(event.target.value)}
           </Col>
           {/* </FormGroup> */}
           <br></br>
-
           {/* <FormGroup row> */}
           <Label for="MiddleName" md={2}>
             <h5> Middle Name</h5>
@@ -51,7 +50,6 @@ x              onChange={(event) => sendFirstName(event.target.value)}
         </FormGroup>
       </div>
       <br></br>
-
       <FormGroup row>
         <Label for="Last Name" md={2}>
           <h5> Last Name</h5>
@@ -67,9 +65,7 @@ x              onChange={(event) => sendFirstName(event.target.value)}
           />
         </Col>
         {/* </FormGroup> */}
-
         <br></br>
-
         {/* <FormGroup row> */}
         <Label for="PhoneNo" md={2}>
           <h5> Phone No</h5>
@@ -85,7 +81,6 @@ x              onChange={(event) => sendFirstName(event.target.value)}
           />
         </Col>
       </FormGroup>
-
       {/* <FormGroup row>
         <Label for="exampleEmail" md={3}>
         <h4>   Email</h4> 
@@ -100,7 +95,6 @@ x              onChange={(event) => sendFirstName(event.target.value)}
         </Col> */}
       {/* </FormGroup> */}
       <br></br>
-
       {/* <FormGroup row> */}
       {/* <Label for="Address" md={3}>
         <h4>  Address</h4> 
@@ -114,7 +108,6 @@ x              onChange={(event) => sendFirstName(event.target.value)}
           />
         </Col>
       </FormGroup> */}
-
       <FormGroup row>
         <Label for="Country" md={2}>
           <h5> Country:</h5>
@@ -130,8 +123,36 @@ x              onChange={(event) => sendFirstName(event.target.value)}
           />
         </Col>
         {/* </FormGroup> */}
-        <br></br>
-
+        {/* <br></br>
+        <Label for=" Date" md={2}>
+          <h5> DOB</h5>
+        </Label>
+        <Col md={4}>
+          <Input
+            style={{ backgroundColor: "white" }}
+            type="date"
+            name="date"
+            id="exampleDate"
+            placeholder="date placeholder"
+            onChange={(event) => sendLoan(event.target.value)}
+          />
+        </Col>
+      </FormGroup>
+      <br></br>
+      <FormGroup row>
+        <Label for="Aadhar number" md={2}>
+          <h5> Aadhar number</h5>
+        </Label>
+        <Col md={4}>
+          <Input
+            style={{ backgroundColor: "white" }}
+            type="text"
+            name="Country"
+            id="Country"
+            placeholder="Enter your country"
+            onChange={(event) => sendAadhar(event.target.value)}
+          />
+        </Col> */}
         {/* <FormGroup row> */}
         <Label for="Loan Amount" md={2}>
           <h5> Loan Amount</h5>
@@ -151,5 +172,4 @@ x              onChange={(event) => sendFirstName(event.target.value)}
     </Form>
   );
 }
-
 export default InputFields;

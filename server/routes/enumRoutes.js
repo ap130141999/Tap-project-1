@@ -23,6 +23,4 @@ router.put("/update", controller.updateEnum);
 router.post("/delete",controller.delEnum);
 router.post("/add", controller.insertData);
 
-
-
 module.exports = router;

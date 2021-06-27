@@ -3,7 +3,7 @@ import Select from "react-select";
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
 import axios from "axios";
-import InputFields from "./inputFields";
+// import InputFields from "./inputFields";
 export const DropdownSelectGender = ({optionHandler}) => {
   const [currentGender, setCurrentGender] = useState();
   const [options, setOptions] = useState([]);
