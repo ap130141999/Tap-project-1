@@ -5,37 +5,36 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const FormButtons = () => {
-  
   const Toast = () => {
     toast.success("Your Data Submitted Successfully", {
-      position: "bottom-center",
+      position: "top-center",
     });
   };
   return (
     <Form>
-      <Button
-        onClick={Toast}
-        type="submit"
-        color="primary"
-        className="text-center"
-        style={{
-          width: "20%",
-          background: "#4CAF50",
-
-          color: "white",
-          padding: "14px 8px",
-          marginleft: "20px",
-          margin: "8px 0",
-
-          border: "none",
-          border: "4px",
-          cursor: "pointer",
-        }}
-      >
-        Submit
-      </Button>
-      <ToastContainer />
+      <div className="d-flex justify-content-end">
+        <Button
+          onClick={Toast}
+          type="submit"
+          color="primary"
+          className="text-center"
+          style={{
+            width: "15%",
+            background: "#4CAF50",
+            fontSize: "15px",
+            color: "white",
+            padding: "14px 8px",
+            margin: "15px 0",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Submit
+        </Button>
+        <ToastContainer />
+      </div>
     </Form>
   );
 };
+
 export default FormButtons;
