@@ -24,29 +24,29 @@ const FormPage = () => {
   const [country, setCountry] = useState("");
   const [loan, setLoan] = useState("");
   const [gender, setGender] = useState("");
+  const [employment, setEmployment] = useState("");
+  const [education,setEducation] = useState("");
+  const [maritalStatus, setMaritalStatus] = useState("");
+  const [loanType, setLoanType] = useState("");
+
+
 
   const submitData = async () => {
-    console.log(
-      firstname,
-      middlename,
-      lastname,
-      country,
-      loan,
-      phone,
-      "sending through"
-    );
-
-    // const g1 = op[0].value;
-    // const g2 = op[0].label;
     let bodyPayload = { firstname: firstname,
       lastname: lastname,
       middlename: middlename,
       phone: phone,
       country: country,
       loan: loan,
-      gender : gender
+      gender : gender,
+      employment : employment,
+      education : education,
+      marital : marital,
+      loanType : loanType,
+      employment : employment,
+
+
     }
-    // bodyPayload[ `${g1}`] = g2;
     console.log(bodyPayload,"hi");
     const response = await axios.post(`http://localhost:3001/enum/add`,bodyPayload);
   };
@@ -76,22 +76,26 @@ const FormPage = () => {
     setLoan(value);
   };
 
-  // const getGender = () => {
-
-  // }
-
   const dropDownHandler = (label) => {
     console.log("Hi option here", label);
     setGender(label);
   };
+  
+  const getEmployment =(label) => {
+    setEmployment(label);
+  }
+  
+  const getEducation =(label) =>{
+    setEducation(label);
+  }
 
-  // console.log(
-  //   "All",
-  //   op.map((el) => {
-  //     console.log(el.val);
-  //   })
-  // );
+  const getMaritalStatus = (label) ={
+    setMaritalStatus(label);
+  }
 
+  const getLoanType = (label) ={
+    setLoanType(label);
+  }
   return (
     <main>
       <Header />
@@ -128,32 +132,26 @@ const FormPage = () => {
               <DropdownSelectGender optionHandler={dropDownHandler} />
             </Col>
             <Col md="6">
-              <DropdownSelectLoan  />
+              <DropdownSelectLoan optionHandler = {getLoanType} />
             </Col>
           </Row>
           <Row>
             <Col md="6">
-              <DropdownSelectEmplyoment />
+              <DropdownSelectEmplyoment  optionHandler ={getEmployment}/>
             </Col>
             <Col md="6">
-              <DropdownSelectMartial  />
+              <DropdownSelectMartial optionHandler= {getMaritalStatus} />
             </Col>
           </Row>
           <Row>
             <Col md="6">
-              <DropdownSelectEducation  />
+              <DropdownSelectEducation optionHandler={getEducation} />
             </Col>
           </Row>
 
           <FormButtons buttonClick={submitData} />
         </Card>
       </Container>
-      {/* <InputFields sendFirstName={getfirstName} 
-       sendMiddleName={getMiddleName} 
-       sendLastName={getLastName} 
-         sendPhone={getPhone} 
-      sendCountry={getCountry}
-      sendLoan={getLoan} /> */}
     </main>
   );
 };
