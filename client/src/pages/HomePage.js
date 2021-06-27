@@ -8,9 +8,9 @@ import {
   CardHeader,
   Col,
   Row,
-  LinearGradient,
 } from "reactstrap";
 import Header from "../components/Header";
+import image from "../image/byjus-logo.png";
 
 
 const HomePage = () => {
@@ -22,7 +22,10 @@ const HomePage = () => {
           <Row>
             <Col md="3"></Col>
             <Col md="3" style={{ textAlign: "center" }}>
-              <Card style={{ boxShadow: "10px 10px 10px #9E9E9E" }}>
+              <Card style={{
+                borderRadius: "20px",
+                boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+              }}>
                 <CardHeader tag="h6">
                   <h6 style={{ color: "black" }}>
                     <b>BYJUS FORM</b>
@@ -30,7 +33,7 @@ const HomePage = () => {
                 </CardHeader>
                 <CardBody className="">
                   <img
-                    src="https://pbs.twimg.com/media/Es_vWIhUUAMrY3n.jpg"
+                    src={image}
                     style={{ width: "80px", height: "80px" }}
                   ></img>
                   <div color="white">
@@ -40,54 +43,21 @@ const HomePage = () => {
                         className="btn btn-primary"
                         style={{ margin: "20px" }}
                       >
-                        Pay{" "}
+                        Pay
                       </Link>
 
-                  
-                  <Link  to="/HistoryPage"  className="btn btn-success">History</Link>
-                  </inline>
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
- 
-          {/* <Col md="3" style={{ textAlign: "center" }}>
-            <Card>
-              <CardHeader tag="h6"><h1 style={{color:"black"}} ><b>BYJUS NACH</b></h1></CardHeader>
-              <CardBody className="">
-              <img src={image}></img>
-                <div color="white">
-                  <Button color="info"  className="m-3">
-                    <Link to="/Form">Pay</Link>
-                  </Button>
-                  <Button color="primary">History</Button>
-                </div>
-              </CardBody>
-            </Card>
-          </Col> */}
-
-            {/* <Col md="3" style={{ textAlign: "center" }}>
-            <Card>
-              <CardHeader tag="h6"><h1>Byjus Nach</h1></CardHeader>
-              <CardBody className="">
-                <CardImg
-                  top
-                  width="100%"
-                  src="/assets/318x180.svg"
-                  alt="image"
-                />
-                <div color="white">
-                  <Button color="success" className="m-3">
-                    <Link to="/Form">Pay</Link>
-                  </Button>
-                  <Button color="primary">History</Button>
-                </div>
-              </CardBody>
-            </Card>
-          </Col> */}
+                      <Link to="/HistoryPage" className="btn btn-success">History</Link>
+                    </inline>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
 
             <Col md="3" style={{ textAlign: "center" }}>
-              <Card style={{ boxShadow: "10px 10px 10px  #9E9E9E" }}>
+              <Card style={{
+                borderRadius: "20px",
+                boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+              }}>
                 <CardHeader>
                   <h6 style={{ color: "black" }}>
                     <b>ENUM CONFIG</b>
@@ -112,36 +82,6 @@ const HomePage = () => {
               </Card>
             </Col>
             <Col md="3"></Col>
-
-            {/* <Col md="3" style={{ textAlign: "center" }}>
-            <Card>
-              <CardHeader tag="h6" style={{color: "#731768"}}><h1 style={{color:"black"}} ><b>ENUM CONFIG</b></h1></CardHeader>
-              <CardBody className="">
-              <img src={image}></img>
-                <div color="white">
-                <Button color="success" className="m-3"><h1></h1>
-                    Enum Config 
-                  </Button>
-                  {/* <Button color="primary">History</Button> */}
-            {/* </div>
-              </CardBody>
-            </Card>
-          </Col>
-         
-          */}
-
-            {/* <Col md="3" style={{ textAlign: "center" }}>
-            <Card>
-              <CardHeader tag="h6">Byjus Nach</CardHeader>
-              <CardBody>
-                <div color="white">
-                  <Button color="success" className="m-3">
-                    Enum Config Page
-                  </Button>
-                </div>
-              </CardBody>
-            </Card>
-          </Col> */}
           </Row>
         </Container>
       </linearGradient>

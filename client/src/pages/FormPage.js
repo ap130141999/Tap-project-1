@@ -9,12 +9,12 @@ import {
   DropdownSelectMartial,
   DropdownSelectEducation,
   DropdownSelectEmplyoment,
-} from "../components/dropDownItems";
+} from "../components/DropDownItems";
 
 import InputFields from "../components/inputFields";
-import FormButtons from "../components/formButtons";
+import FormButtons from "../components/FormButtons";
 import Header from "../components/Header";
-// import HomePage from "./HomePage";
+
 
 const FormPage = () => {
   const [firstname, setFirstname] = useState("");
@@ -24,31 +24,36 @@ const FormPage = () => {
   const [country, setCountry] = useState("");
   const [loan, setLoan] = useState("");
   const [gender, setGender] = useState("");
+  const [account , setAccount] = useState("");
+  const [aadhar,setAadhar] = useState("");
   const [employment, setEmployment] = useState("");
-  const [education,setEducation] = useState("");
-  const [maritalStatus, setMaritalStatus] = useState("");
+  const [education, setEducation] = useState("");
+  const [marital, setMarital] = useState("");
   const [loanType, setLoanType] = useState("");
 
 
 
   const submitData = async () => {
-    let bodyPayload = { firstname: firstname,
+    let bodyPayload = {
+      firstname: firstname,
       lastname: lastname,
       middlename: middlename,
       phone: phone,
       country: country,
       loan: loan,
-      gender : gender,
-      employment : employment,
-      education : education,
-      marital : marital,
-      loanType : loanType,
-      employment : employment,
+      gender: gender,
+      employment: employment,
+      education: education,
+      marital: marital,
+      loanType: loanType,
+      employment: employment,
+      aadhar : aadhar,
+      account : account
 
 
     }
-    console.log(bodyPayload,"hi");
-    const response = await axios.post(`http://localhost:3001/enum/add`,bodyPayload);
+    console.log(bodyPayload, "hi");
+    const response = await axios.post(`http://localhost:3001/enum/add`, bodyPayload);
   };
 
   const getfirstName = (value) => {
@@ -80,21 +85,29 @@ const FormPage = () => {
     console.log("Hi option here", label);
     setGender(label);
   };
-  
-  const getEmployment =(label) => {
+
+  const getEmployment = (label) => {
     setEmployment(label);
   }
-  
-  const getEducation =(label) =>{
+
+  const getEducation = (label) => {
     setEducation(label);
   }
 
-  const getMaritalStatus = (label) ={
-    setMaritalStatus(label);
+  const getMarital = (label) => {
+    setMarital(label);
   }
 
-  const getLoanType = (label) ={
+  const getLoanType = (label) => {
     setLoanType(label);
+  }
+
+  const getAccount = (label) =>{
+    setAccount(label);
+  }
+
+  const getAadhar =(label) =>{
+    setAadhar(label);
   }
   return (
     <main>
@@ -125,6 +138,8 @@ const FormPage = () => {
             sendPhone={getPhone}
             sendCountry={getCountry}
             sendLoan={getLoan}
+            sendAadhar ={getAadhar}
+            sendAccount ={getAccount}
           />
 
           <Row>
@@ -132,15 +147,15 @@ const FormPage = () => {
               <DropdownSelectGender optionHandler={dropDownHandler} />
             </Col>
             <Col md="6">
-              <DropdownSelectLoan optionHandler = {getLoanType} />
+              <DropdownSelectLoan optionHandler={getLoanType} />
             </Col>
           </Row>
           <Row>
             <Col md="6">
-              <DropdownSelectEmplyoment  optionHandler ={getEmployment}/>
+              <DropdownSelectEmplyoment optionHandler={getEmployment} />
             </Col>
             <Col md="6">
-              <DropdownSelectMartial optionHandler= {getMaritalStatus} />
+              <DropdownSelectMartial optionHandler={getMarital} />
             </Col>
           </Row>
           <Row>

@@ -1,13 +1,12 @@
-
 import Select from "react-select";
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
 import axios from "axios";
-// import InputFields from "./inputFields";
-export const DropdownSelectGender = ({optionHandler}) => {
+
+export const DropdownSelectGender = ({ optionHandler }) => {
   const [currentGender, setCurrentGender] = useState();
   const [options, setOptions] = useState([]);
-  
+
   useEffect(() => {
     getEnum();
   }, []);
@@ -29,9 +28,8 @@ export const DropdownSelectGender = ({optionHandler}) => {
     setCurrentGender(event.value);
     setCurrentGender(event.label);
     optionHandler(event.label);
-    console.log(event.label,"bye");
+    console.log(event.label, "bye");
   };
-  
 
   return (
     <Row className="mb-4">
@@ -52,7 +50,7 @@ export const DropdownSelectGender = ({optionHandler}) => {
   );
 };
 
-export const DropdownSelectLoan = ({optionHandler}) => {
+export const DropdownSelectLoan = ({ optionHandler }) => {
   const [currentloan, setCurrentLoan] = useState([]);
   const [options, setOptions] = useState([]);
   useEffect(() => {
@@ -97,7 +95,8 @@ export const DropdownSelectLoan = ({optionHandler}) => {
     </Row>
   );
 };
-export const DropdownSelectEducation = ({optionHandler}) => {
+
+export const DropdownSelectEducation = ({ optionHandler }) => {
   const [currentEducation, setCurrentEducation] = useState();
   const [options, setOptions] = useState([]);
   useEffect(() => {
@@ -122,7 +121,7 @@ export const DropdownSelectEducation = ({optionHandler}) => {
     setCurrentEducation(event.label);
     optionHandler(event.label);
   };
-  
+
 
   return (
     <Row className="mt-4">
@@ -143,8 +142,8 @@ export const DropdownSelectEducation = ({optionHandler}) => {
   );
 };
 
-export const DropdownSelectMartial = ({optionHandler}) => {
-   const [currentStatus, setCurrentStatus] = useState([]);
+export const DropdownSelectMartial = ({ optionHandler }) => {
+  const [currentStatus, setCurrentStatus] = useState([]);
   const [options, setOptions] = useState([]);
   useEffect(() => {
     getEnum();
@@ -168,7 +167,7 @@ export const DropdownSelectMartial = ({optionHandler}) => {
     setCurrentStatus(event.label);
     optionHandler(event.label);
   };
-  
+
 
   return (
     <Row>
@@ -189,7 +188,7 @@ export const DropdownSelectMartial = ({optionHandler}) => {
   );
 };
 
-export const DropdownSelectEmplyoment = ({optionHandler}) => {
+export const DropdownSelectEmplyoment = ({ optionHandler }) => {
   const [currentEmployment, setCurrentEmployment] = useState(["married"]);
   const [options, setOptions] = useState([]);
   useEffect(() => {
@@ -214,7 +213,7 @@ export const DropdownSelectEmplyoment = ({optionHandler}) => {
     setCurrentEmployment(event.label);
     optionHandler(event.label);
   };
-  
+
 
   return (
     <Row>

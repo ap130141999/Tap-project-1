@@ -48,7 +48,7 @@ const DynamicTable = (props) => {
           <h1
             style={{
               textAlign: "center",
-              color: "lightgrey",
+              color: "white",
             }}
           >
             ENUM TABLE

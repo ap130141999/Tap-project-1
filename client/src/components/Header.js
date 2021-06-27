@@ -1,6 +1,6 @@
-
 import React from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,10 +16,8 @@ function Header() {
         <FontAwesomeIcon icon={faHome} mask={["far", "circle"]} color="white" />
       </NavbarBrand>
       <NavbarBrand href="/" style={{ color: "#ffff" }}>
-        Byjus Pay
+        BYJUS PAY
       </NavbarBrand>
-
-      <form className="d-flex w-auto"></form>
     </Navbar>
   );
 }
