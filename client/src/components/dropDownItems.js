@@ -1,43 +1,48 @@
+
 import Select from "react-select";
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
 import axios from "axios";
 import InputFields from "./inputFields";
-export const DropdownSelectGender = ({ genderDetector }) => {
-  const [currentOption, setCurrentOption] = useState([]);
+export const DropdownSelectGender = ({optionHandler}) => {
+  const [currentGender, setCurrentGender] = useState();
   const [options, setOptions] = useState([]);
-
+  
   useEffect(() => {
     getEnum();
   }, []);
 
   const getEnum = async () => {
     const response = await axios.get(`http://localhost:3001/enum/get`);
-    setCurrentOption(response.data);
+    setCurrentGender(response.data);
 
-    response.data.map((option) => {
-      if (option.enumId === "gender") {
-        console.log(option);
-        setOptions(option.optionValues);
+    response.data.map((el) => {
+      if (el.enumId === "gender") {
+        console.log(el);
+        setOptions(el.optionValues);
       }
     });
   };
+  console.log(options);
 
-  const changeOption = (newOption) => {
-    setCurrentOption(newOption);
+  const changeOption = (event) => {
+    setCurrentGender(event.value);
+    setCurrentGender(event.label);
+    optionHandler(event.label);
   };
+  
 
   return (
-    <Row>
+    <Row className="mb-4">
       <Col md={4}>
         <h5>Gender</h5>
       </Col>
       <Col md={8}>
         <Select
-          onChange={(event) => changeOption()}
-          value={currentOption}
+          placeholder="Select gender"
+          onChange={changeOption}
+          defaultValue={options[0]}
           options={options}
-          
         ></Select>
       </Col>
       <br></br>
@@ -46,10 +51,8 @@ export const DropdownSelectGender = ({ genderDetector }) => {
   );
 };
 
-// DropDown for loanType
-
-export const DropdownSelectLoan = ({ loanDetector }) => {
-  const [currentOption, setCurrentOption] = useState(loanDetector);
+export const DropdownSelectLoan = ({optionHandler}) => {
+  const [currentloan, setCurrentLoan] = useState([]);
   const [options, setOptions] = useState([]);
   useEffect(() => {
     getEnum();
@@ -57,7 +60,7 @@ export const DropdownSelectLoan = ({ loanDetector }) => {
 
   const getEnum = async () => {
     const response = await axios.get(`http://localhost:3001/enum/get`);
-    setCurrentOption(response.data);
+    setCurrentLoan(response.data);
 
     response.data.map((el) => {
       if (el.enumId === "loan_type") {
@@ -66,20 +69,25 @@ export const DropdownSelectLoan = ({ loanDetector }) => {
       }
     });
   };
+  console.log(options);
 
-  const changeOption = (newOption) => {
-    setCurrentOption(newOption);
+  const changeOption = (event) => {
+    setCurrentLoan(event.value);
+    setCurrentLoan(event.label);
+    optionHandler(event.label);
   };
+  console.log(currentloan);
 
   return (
     <Row>
       <Col md={4}>
-        <h5>Loan type</h5>
+        <h5>Loan Type</h5>
       </Col>
       <Col md={8}>
         <Select
-          onChange={(event) => changeOption()}
-          value={currentOption}
+          placeholder="Select Loan type"
+          onChange={changeOption}
+          defaultValue={options[0]}
           options={options}
         ></Select>
       </Col>
@@ -88,11 +96,8 @@ export const DropdownSelectLoan = ({ loanDetector }) => {
     </Row>
   );
 };
-
-//DropDown for martial status
-
-export const DropdownSelectMartial = ({ martialDetector }) => {
-  const [currentOption, setCurrentOption] = useState(martialDetector);
+export const DropdownSelectEducation = ({optionHandler}) => {
+  const [currentEducation, setCurrentEducation] = useState();
   const [options, setOptions] = useState([]);
   useEffect(() => {
     getEnum();
@@ -100,50 +105,7 @@ export const DropdownSelectMartial = ({ martialDetector }) => {
 
   const getEnum = async () => {
     const response = await axios.get(`http://localhost:3001/enum/get`);
-    setCurrentOption(response.data);
-
-    response.data.map((el) => {
-      if (el.enumId === "marital_status") {
-        console.log(el);
-        setOptions(el.optionValues);
-      }
-    });
-  };
-
-  const changeOption = (newOption) => {
-    setCurrentOption(newOption);
-  };
-
-  return (
-    <Row>
-      <Col md={4}>
-        <h5>Martial Status</h5>
-      </Col>
-      <Col md={8}>
-        <Select
-          onChange={(event) => changeOption()}
-          value={currentOption}
-          options={options}
-        ></Select>
-      </Col>
-      <br></br>
-      <br></br>
-    </Row>
-  );
-};
-
-//Dropdown  Education
-
-export const DropdownSelectEducation = ({ martialDetector }) => {
-  const [currentOption, setCurrentOption] = useState(martialDetector);
-  const [options, setOptions] = useState([]);
-  useEffect(() => {
-    getEnum();
-  }, []);
-
-  const getEnum = async () => {
-    const response = await axios.get(`http://localhost:3001/enum/get`);
-    setCurrentOption(response.data);
+    setCurrentEducation(response.data);
 
     response.data.map((el) => {
       if (el.enumId === "education") {
@@ -152,22 +114,26 @@ export const DropdownSelectEducation = ({ martialDetector }) => {
       }
     });
   };
+  console.log(options);
 
-  const changeOption = (newOption) => {
-    setCurrentOption(newOption);
+  const changeOption = (event) => {
+    setCurrentEducation(event.value);
+    setCurrentEducation(event.label);
+    optionHandler(event.label);
   };
+  
 
   return (
-    <Row>
+    <Row className="mt-4">
       <Col md={4}>
         <h5>Education</h5>
       </Col>
       <Col md={8}>
         <Select
-          onChange={(event) => changeOption()}
-          value={currentOption}
+          placeholder="Select education"
+          onChange={changeOption}
+          defaultValue={options[0]}
           options={options}
-          
         ></Select>
       </Col>
       <br></br>
@@ -176,19 +142,78 @@ export const DropdownSelectEducation = ({ martialDetector }) => {
   );
 };
 
-//Dropdown Employment
+export const DropdownSelectMartial = ({optionHandler}) => {
+   const [currentStatus, setCurrentStatus] = useState([]);
+  const [options, setOptions] = useState([]);
+  useEffect(() => {
+    getEnum();
+  }, []);
 
-export const DropdownSelectEmplyoment = ({ employeDetector }) => {
-  const [currentOption, setCurrentOption] = useState(employeDetector);
+  const getEnum = async () => {
+    const response = await axios.get(`http://localhost:3001/enum/get`);
+    setCurrentStatus(response.data);
 
-  const options = [
-    { value: "employed", label: "Employed" },
-    { value: "unemployed", label: "Unemployed" },
-  ];
-
-  const changeOption = (newOption) => {
-    setCurrentOption(newOption);
+    response.data.map((el) => {
+      if (el.enumId === "marital_status") {
+        console.log(el);
+        setOptions(el.optionValues);
+      }
+    });
   };
+  console.log(options);
+
+  const changeOption = (event) => {
+    setCurrentStatus(event.value);
+    setCurrentStatus(event.label);
+    optionHandler(event.label);
+  };
+  
+
+  return (
+    <Row>
+      <Col md={4}>
+        <h5>Martial Status</h5>
+      </Col>
+      <Col md={8}>
+        <Select
+          placeholder="Select martial status"
+          onChange={changeOption}
+          defaultValue={options[0]}
+          options={options}
+        ></Select>
+      </Col>
+      <br></br>
+      <br></br>
+    </Row>
+  );
+};
+
+export const DropdownSelectEmplyoment = ({optionHandler}) => {
+  const [currentEmployment, setCurrentEmployment] = useState(["married"]);
+  const [options, setOptions] = useState([]);
+  useEffect(() => {
+    getEnum();
+  }, []);
+
+  const getEnum = async () => {
+    const response = await axios.get(`http://localhost:3001/enum/get`);
+    setCurrentEmployment(response.data);
+
+    response.data.map((el) => {
+      if (el.enumId === "employment") {
+        console.log(el);
+        setOptions(el.optionValues);
+      }
+    });
+  };
+  console.log(options);
+
+  const changeOption = (event) => {
+    setCurrentEmployment(event.value);
+    setCurrentEmployment(event.label);
+    optionHandler(event.label);
+  };
+  
 
   return (
     <Row>
@@ -197,8 +222,9 @@ export const DropdownSelectEmplyoment = ({ employeDetector }) => {
       </Col>
       <Col md={8}>
         <Select
-          onChange={(event) => changeOption()}
-          value={currentOption}
+          placeholder="Select Employment"
+          onChange={changeOption}
+          defaultValue={options[0]}
           options={options}
         ></Select>
       </Col>

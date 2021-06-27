@@ -1,4 +1,5 @@
-import {connectToDatabase} from './enumController';
+import React from "react";
+
 
 const insertData = async (req,res)=> {
     const {firstname,lastname,middlename,phone,country,loan} = req.body;
@@ -16,6 +17,6 @@ const insertData = async (req,res)=> {
   console.log(response);
 
 }
-connectToDatabase();
 
-module.exports = insertData;
+
+// module.exports = {insertData};

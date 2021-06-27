@@ -18,43 +18,14 @@ const findAllEnums = async (req, res) => {
   // console.log(JSON.stringify(response));
 };
 
-// const insertEnums = async (req,res) => {
-//   const { enumId, optionValues, label,value } = req.body;
-//   var doc = { enumId : "newEnum" , optionValues : [
-//     label = "label1", value = "value1"
-//   ]};
-
-//   const collection = client.db(dbName).collection(collectionName);
-//   const response = await collection(collectionName).insertOne(doc, (err) => {
-//     if (err) throw err;
-//     console.log("Document inserted");
-//     res.send(JSON.stringify(response.result));
-
-//   })
-
-// }
 const insertEnums = async (req, res) => {
   const { enumId, optionValues } = req.body;
   const { label, value } = optionValues;
-  // console.log(req.body.optionValues);
-  // console.log(req.body);
-  // console.log(enumId, optionValues);
-  // console.log(label,value);
-  //   let value = [];
-  // for(let i=0;i<optionValues.length;i++){
-  //    let { label, value} = optionValues[i];
-  //     value.push(optionValues[i]);
-
-  //   }
-  //   console.log(value);
+ 
   const collection = client.db(dbName).collection(collectionName);
   const response = await collection.insertOne({
     enumId: enumId, optionValues
-    //  optionValues: [ {
-    //  label : label, 
-    //  value : value
-    //   } ]
-
+    
   });
 
 
@@ -99,73 +70,6 @@ const connectToDatabase = async () => {
   client = await MongoClient.connect(process.env.MO_URI);
 };
 
-connectToDatabase();
-
-
-
-
-
-
-
-// const mongoose = require('mongoose');
-// // mongoose.connect = require('mongoose');
-// mongoose.connect(process.env.MO_URI);
-// var db = mongoose.connection;
-
-// db.on('error', console.log.bind(console, "connection error"));
-// db.once('open', function(callback){
-//     console.log("connection succeeded");
-// })
-
-// var app=express()
-
-
-// app.use(bodyParser.json());
-// app.use(express.static('public'));
-// app.use(bodyParser.urlencoded({
-//     extended: true
-// }));
-
-const trialPost = async (req, res) => {
-  // app.post('/sign_up', function(req,res)
-  // {
-
-  // console.log(req.body);
-  const email = req.body.email;
-  const pass = req.body.pass;
-  const address = req.body.address;
-  const city = req.body.city;
-  const state = req.body.state;
-  const zip = req.body.zip;
-
-  console.log(email,pass,address,city,state,zip);
-
-  //  const {email,pass,address,city,State,zip} = req.body;
-  const data = {
-    // "name": name,
-    "email": email,
-    "password": pass,
-    "address": address,
-    "zip": zip,
-    "state": state,
-    "city": city
-  }
-  // const collection = client.db('credit_guardians').collection('details');
-  // const dbResponse = await collection.insertOne(data);
-
-  // res.send(JSON.stringify(dbResponse.result));
-  
-  // }
-  // app.post('/signup', async (req, res) => {
-    // const { email, pass, address, zip,state,city } = req.body;
-    // const collection = client.db('details_db').collection('details');
-    // const response = await collection.insertOne(data);
-    res.send(JSON.stringify(response.result));
-
-// console.log(response);
-console.log("server listening at port 3000");
-}
-
 const findAllDetails = async (req, res) => {
   const collection = client.db('details_db').collection('details');
   const response = await collection.find({}).toArray();
@@ -175,4 +79,27 @@ const findAllDetails = async (req, res) => {
 };
 
 
-module.exports = { findAllEnums, connectToDatabase, insertEnums, updateEnum, trialPost, findAllDetails, delEnum};
+const insertData = async (req,res)=> {
+  const {firstname,lastname,middlename,phone,country,loan} = req.body;
+  console.log(req.body);
+  const collection = client.db('details_db').collection('details');
+  const data = {
+      firstname:firstname,
+      lastname:lastname,
+      middlename:middlename,
+      phone:phone,
+      country:country,
+      loan:loan 
+      
+  }
+  const response = await collection.insertOne(data);
+  res.send(JSON.stringify(response.result));
+  console.log(response);
+
+}
+
+
+connectToDatabase();
+
+
+module.exports = { findAllEnums, connectToDatabase, insertEnums, updateEnum,  findAllDetails, delEnum , insertData};

@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import Header from "../components/Header";
 
+
 const HomePage = () => {
   return (
     <div>
@@ -28,7 +29,7 @@ const HomePage = () => {
                     <Link to="/Form"  className="btn btn-primary"  style={{margin:"20px"}}>Pay  </Link>
 
                   
-                  <Link  to="/Form"  className="btn btn-success">History</Link>
+                  <Link  to="/HistoryPage"  className="btn btn-success">History</Link>
                   </inline>
                 </div>
               </CardBody>

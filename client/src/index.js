@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
 import trialFormPage from "./components/trialIputFields";
 import DynamicTable from "./pages/dynamicConfig";
+import HistoryPage from "./pages/HistoryPage";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route exact path="/Form" component={FormPage} />
         <Route exact path = "/trial" component ={trialFormPage} />
         <Route exact path ="/table" component = {DynamicTable} />
+        <Route exact path ="/HistoryPage" component ={HistoryPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

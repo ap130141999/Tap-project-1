@@ -1,10 +1,8 @@
 import React from "react";
 import "../App.css";
 import axios from "axios";
-
-
-
 import { Container, Col,Row  ,Card,CardBody} from "reactstrap";
+import { useState } from "react";
 import {
   DropdownSelectGender,
   DropdownSelectLoan,
@@ -12,26 +10,76 @@ import {
   DropdownSelectEducation,
   DropdownSelectEmplyoment,
 } from "../components/dropDownItems";
+
 import InputFields from "../components/inputFields";
 import FormButtons from "../components/formButtons";
-// import HomePage from "./HomePage";
 import Header from "../components/Header";
+// import HomePage from "./HomePage";
 
 
 
-function FormPage() {
-  const toggle = (firstname,lastname,middlename,phone,country,loan) => {
-    // console.log("ID", Id, "Value", val);
-    const edit = async () =>
-      await axios.put(`http://localhost:3001/enum/update`, {
-        firstname:firstname,lastname:lastname,middlename:middlename,phone:phone,country:country,loan:loan 
-      });
 
-    edit();
-  };
+const FormPage = () => {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [middlename , setMiddlename] = useState('');
+  const [phone, setPhone] = useState('');
+  const [country,setCountry] = useState('');
+  const [loan, setLoan] = useState('');
+
+      const submitData = async() => { 
+        console.log(firstname,middlename,lastname,country,loan,phone,"sending through");
+      const response = await axios.post(`http://localhost:3001/enum/add`,
+       {
+        firstname:firstname,lastname:lastname,middlename:middlename,phone:phone,country:country,loan:loan
+      }
+     );
+      }
+
+     const getfirstName = (value) => {
+       console.log(value);
+       setFirstname(value);
+     };
+     const getMiddleName = (value) => {
+      console.log(value);
+      setMiddlename(value);
+    };
+    const getLastName = (value) => {
+      console.log(value);
+      setLastname(value);
+    };
+    const getPhone = (value) => {
+      console.log(value);
+      setPhone(value);
+    };
+    const getCountry = (value) => {
+      console.log(value);
+      setCountry(value);
+    };
+    const getLoan = (value) => {
+      console.log(value);
+      setLoan(value);
+    };
+
+    // const getGender = () => {
+
+    // }
+
+      const [op, setOP] = useState([]);
+      const dropDownHandler = (option, label) => {
+        console.log("Hi option here", label, option);
+        setOP([...op, { label: label, val: option }]);
+      };
+    
+      console.log("All", op.map(el => {
+        console.log(el.val)
+      }));
+    
+
   
   return (
     <main>
+
       <Header />
       <Container>
         <Card
@@ -50,32 +98,46 @@ function FormPage() {
             </CardBody>
           </Card>
           <br></br>
-          <InputFields />
+          <InputFields sendFirstName={getfirstName} 
+       sendMiddleName={getMiddleName} 
+       sendLastName={getLastName} 
+         sendPhone={getPhone} 
+      sendCountry={getCountry}
+      sendLoan={getLoan} />
+      
           <Row>
             <Col md="6">
-              <DropdownSelectGender />
+              <DropdownSelectGender optionHandler = {dropDownHandler} />
             </Col>
             <Col md="6">
-              <DropdownSelectLoan />
+              <DropdownSelectLoan optionHandler = {dropDownHandler}/>
             </Col>
           </Row>
           <Row>
             <Col md="6">
-              <DropdownSelectEmplyoment />
+              <DropdownSelectEmplyoment optionHandler = {dropDownHandler} />
             </Col>
             <Col md="6">
-              <DropdownSelectMartial />
+              <DropdownSelectMartial optionHandler = {dropDownHandler}/>
             </Col>
           </Row>
           <Row>
             <Col md="6">
-              <DropdownSelectEducation />
+              <DropdownSelectEducation optionHandler = {dropDownHandler}/>
             </Col>
           </Row>
 
-          <FormButtons />
+          <FormButtons buttonClick={submitData}  />
         </Card>
       </Container>
+      {/* <InputFields sendFirstName={getfirstName} 
+       sendMiddleName={getMiddleName} 
+       sendLastName={getLastName} 
+         sendPhone={getPhone} 
+      sendCountry={getCountry}
+      sendLoan={getLoan} /> */}
+     
+      
     </main>
   );
 }

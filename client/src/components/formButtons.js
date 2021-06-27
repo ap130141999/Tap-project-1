@@ -4,18 +4,19 @@ import Form from "react-bootstrap/Form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const FormButtons = () => {
+const FormButtons = (props) => {
+  const {buttonClick} = props;
   
-  const Toast = () => {
-    toast.success("Your Data Submitted Successfully", {
-      position: "bottom-center",
-    });
-  };
+  // const Toast = () => {
+  //   toast.success("Your Data Submitted Successfully", {
+  //     position: "bottom-center",
+  //   });
+  // };
   return (
     <Form>
       <Button
-        onClick={Toast}
-        type="submit"
+        onClick={buttonClick}
+        // type="submit"
         color="primary"
         className="text-center"
         style={{

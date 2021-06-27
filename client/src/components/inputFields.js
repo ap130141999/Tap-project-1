@@ -4,13 +4,14 @@ import Helmet from "react-helmet";
 // import { use } from "../../../server/routes/enumRoutes";
 
 <Helmet bodyAttributes={{ style: "background-color : red" }} />;
-function InputFields() {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [middlename , setMiddlename] = useState('');
-  const [phone, setPhone] = useState('');
-  const [country,setCountry] = useState('');
-  const [loan, setLoan] = useState('');
+const InputFields =  (props) => {
+  const {sendFirstName,sendMiddleName,sendLastName,sendLoan,sendPhone,sendCountry}= props;
+  // const [firstname, setFirstname] = useState('');
+  // const [lastname, setLastname] = useState('');
+  // const [middlename , setMiddlename] = useState('');
+  // const [phone, setPhone] = useState('');
+  // const [country,setCountry] = useState('');
+  // const [loan, setLoan] = useState('');
 
   return (
     <Form>
@@ -27,7 +28,7 @@ function InputFields() {
               id="FirstName"
               placeholder="Enter your first name"
               required
-              onChange={(event) => setFirstname(event.target.value)}
+x              onChange={(event) => sendFirstName(event.target.value)}
             />
           </Col>
           {/* </FormGroup> */}
@@ -44,7 +45,7 @@ function InputFields() {
               name="MiddleName"
               id="MiddleName"
               placeholder="Enter your Middle name"
-              onChange={(event) => setMiddlename(event.target.value)}
+              onChange={(event) => sendMiddleName(event.target.value)}
             />
           </Col>
         </FormGroup>
@@ -62,7 +63,7 @@ function InputFields() {
             name="LastName"
             id="LastName"
             placeholder="Enter your last name"
-            onChange={(event) => setLastname(event.target.value)}
+            onChange={(event) => sendLastName(event.target.value)}
           />
         </Col>
         {/* </FormGroup> */}
@@ -76,11 +77,11 @@ function InputFields() {
         <Col md={4}>
           <Input
             style={{ backgroundColor: "white" }}
-            type="text"
+            type="number"
             name="MobileNumber"
             id="PhoneNo"
             placeholder="Enter phone number"
-            onChange={(event) => setPhone(event.target.value)}
+            onChange={(event) => sendPhone(event.target.value)}
           />
         </Col>
       </FormGroup>
@@ -125,7 +126,7 @@ function InputFields() {
             name="Country"
             id="Country"
             placeholder="Enter your country"
-            onChange={(event) => setCountry(event.target.value)}
+            onChange={(event) => sendCountry(event.target.value)}
           />
         </Col>
         {/* </FormGroup> */}
@@ -142,7 +143,7 @@ function InputFields() {
             name="LoanAmount"
             id="Loan Amount"
             placeholder="Enter the loan amount"
-            onChange={(event) => setLoan(event.target.value)}
+            onChange={(event) => sendLoan(event.target.value)}
           />
         </Col>
       </FormGroup>
