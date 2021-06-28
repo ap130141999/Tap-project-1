@@ -1,9 +1,17 @@
 import { Col, Form, Input, Label, FormGroup, FormText } from "reactstrap";
 import React from "react";
 
-
-const InputFields =  (props) => {
-  const {sendFirstName,sendMiddleName,sendLastName,sendLoan,sendPhone,sendCountry, sendAccount, sendAadhar}= props;
+const InputFields = (props) => {
+  const {
+    sendFirstName,
+    sendMiddleName,
+    sendLastName,
+    sendLoan,
+    sendPhone,
+    sendCountry,
+    sendAccount,
+    sendAadhar,
+  } = props;
 
   return (
     <Form>
@@ -14,15 +22,13 @@ const InputFields =  (props) => {
           </Label>
           <Col md={4}>
             <Input
-              
               style={{ backgroundColor: "white" }}
               type="text"
               name="FirstName"
               id="FirstName"
               placeholder="Enter your first name"
               required="required"
-              onChange={(event) => sendFirstName(event.target.value)
-              }
+              onChange={(event) => sendFirstName(event.target.value)}
             />
           </Col>
           {/* </FormGroup> */}
@@ -49,7 +55,7 @@ const InputFields =  (props) => {
         <Label for="Last Name" md={2}>
           <h5> Last Name</h5>
         </Label>
-        <Col md={4}>
+        <Col md={4} className="mb-4">
           <Input
             style={{ backgroundColor: "white" }}
             type="text"
@@ -60,7 +66,7 @@ const InputFields =  (props) => {
             onChange={(event) => sendLastName(event.target.value)}
           />
         </Col>
-        
+
         <br></br>
         <Label for="PhoneNo" md={2}>
           <h5> Phone No</h5>
@@ -143,5 +149,5 @@ const InputFields =  (props) => {
       <br></br>
     </Form>
   );
-}
+};
 export default InputFields;

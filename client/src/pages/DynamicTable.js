@@ -5,13 +5,12 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-import EnumModal from "../components/modals";
-import Header from "../components/Header";
+import EnumModal from "../components/Modals.js";
+import Header from "../components/Header.js";
 
 import "../index.css";
 
 const DynamicTable = (props) => {
-
   const [tableData, setTableData] = useState([]);
   useEffect(() => {
     getEnum();

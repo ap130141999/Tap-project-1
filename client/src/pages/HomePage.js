@@ -1,17 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import {
-  Card,
-  CardBody,
-  Container,
-  CardHeader,
-  Col,
-  Row,
-} from "reactstrap";
-import Header from "../components/Header";
+import { Card, CardBody, Container, CardHeader, Col, Row } from "reactstrap";
+import Header from "../components/Header.js";
 import image from "../image/byjus-logo.png";
-
 
 const HomePage = () => {
   return (
@@ -22,10 +14,12 @@ const HomePage = () => {
           <Row>
             <Col md="3"></Col>
             <Col md="3" style={{ textAlign: "center" }}>
-              <Card style={{
-                borderRadius: "20px",
-                boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-              }}>
+              <Card
+                style={{
+                  borderRadius: "20px",
+                  boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+                }}
+              >
                 <CardHeader tag="h6">
                   <h6 style={{ color: "black" }}>
                     <b>BYJUS FORM</b>
@@ -46,7 +40,9 @@ const HomePage = () => {
                         Pay
                       </Link>
 
-                      <Link to="/HistoryPage" className="btn btn-success">History</Link>
+                      <Link to="/HistoryPage" className="btn btn-success">
+                        History
+                      </Link>
                     </inline>
                   </div>
                 </CardBody>
@@ -54,10 +50,12 @@ const HomePage = () => {
             </Col>
 
             <Col md="3" style={{ textAlign: "center" }}>
-              <Card style={{
-                borderRadius: "20px",
-                boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-              }}>
+              <Card
+                style={{
+                  borderRadius: "20px",
+                  boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+                }}
+              >
                 <CardHeader>
                   <h6 style={{ color: "black" }}>
                     <b>ENUM CONFIG</b>
