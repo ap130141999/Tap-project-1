@@ -11,7 +11,7 @@ const FormButtons = (props) => {
         onClick={buttonClick}
         type="submit"
         color="primary"
-        className="text-center"
+        className="text-center d-flex justify-content-end"
         style={{
           width: "20%",
           background: "#4CAF50",
