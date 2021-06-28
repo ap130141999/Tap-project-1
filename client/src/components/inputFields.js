@@ -49,7 +49,7 @@ const InputFields =  (props) => {
         <Label for="Last Name" md={2}>
           <h5> Last Name</h5>
         </Label>
-        <Col md={4}>
+        <Col md={4}className="mb-4">
           <Input
             style={{ backgroundColor: "white" }}
             type="text"
