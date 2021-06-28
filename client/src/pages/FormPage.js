@@ -11,10 +11,9 @@ import {
   DropdownSelectEmplyoment,
 } from "../components/DropDownItems";
 
-import InputFields from "../components/inputFields";
-import FormButtons from "../components/FormButtons";
-import Header from "../components/Header";
-
+import InputFields from "../components/InputFields.js";
+import FormButtons from "../components/FormButtons.js";
+import Header from "../components/Header.js";
 
 const FormPage = () => {
   const [firstname, setFirstname] = useState("");
@@ -24,14 +23,12 @@ const FormPage = () => {
   const [country, setCountry] = useState("");
   const [loan, setLoan] = useState("");
   const [gender, setGender] = useState("");
-  const [account , setAccount] = useState("");
-  const [aadhar,setAadhar] = useState("");
+  const [account, setAccount] = useState("");
+  const [aadhar, setAadhar] = useState("");
   const [employment, setEmployment] = useState("");
   const [education, setEducation] = useState("");
   const [marital, setMarital] = useState("");
   const [loanType, setLoanType] = useState("");
-
-
 
   const submitData = async () => {
     let bodyPayload = {
@@ -47,13 +44,14 @@ const FormPage = () => {
       marital: marital,
       loanType: loanType,
       employment: employment,
-      aadhar : aadhar,
-      account : account
-
-
-    }
+      aadhar: aadhar,
+      account: account,
+    };
     console.log(bodyPayload, "hi");
-    const response = await axios.post(`http://localhost:3001/enum/add`, bodyPayload);
+    const response = await axios.post(
+      `http://localhost:3001/enum/addDetails`,
+      bodyPayload
+    );
   };
 
   const getfirstName = (value) => {
@@ -88,32 +86,32 @@ const FormPage = () => {
 
   const getEmployment = (label) => {
     setEmployment(label);
-  }
+  };
 
   const getEducation = (label) => {
     setEducation(label);
-  }
+  };
 
   const getMarital = (label) => {
     setMarital(label);
-  }
+  };
 
   const getLoanType = (label) => {
     setLoanType(label);
-  }
+  };
 
-  const getAccount = (label) =>{
+  const getAccount = (label) => {
     setAccount(label);
-  }
+  };
 
-  const getAadhar =(label) =>{
+  const getAadhar = (label) => {
     setAadhar(label);
-  }
+  };
   return (
     <main>
       <Header />
       <Container className="mb-4">
-        <Card style={{ boxShadow: "5px 5px 5px grey" }}>
+        <Card style={{ boxShadow: "5px 5px 5px grey", borderRadius: "20px" }}>
           <CardBody
             className="text-center "
             style={{ backgroundColor: "#9d4edd", color: "white" }}
@@ -138,8 +136,8 @@ const FormPage = () => {
             sendPhone={getPhone}
             sendCountry={getCountry}
             sendLoan={getLoan}
-            sendAadhar ={getAadhar}
-            sendAccount ={getAccount}
+            sendAadhar={getAadhar}
+            sendAccount={getAccount}
           />
 
           <Row>

@@ -7,50 +7,73 @@ const collectionName = "dynamic_enum";
 const app = express();
 let client = null;
 
+//MongoDB api call to GET all data from the collections
 const findAllEnums = async (req, res) => {
   const collection = client.db(dbName).collection(collectionName);
   const response = await collection.find({}).toArray();
   res.send(JSON.stringify(response));
 };
 
+//MongoDB api call to Create all data from the collections
 const insertEnums = async (req, res) => {
   const { enumId, optionValues } = req.body;
   const { label, value } = optionValues;
   const collection = client.db(dbName).collection(collectionName);
   const response = await collection.insertOne({
-    enumId: enumId, optionValues
+    enumId: enumId,
+    optionValues,
   });
 
   res.send(JSON.stringify(response.result));
-}
+};
 
+//MongoDB api call to UPDATE all data from the collections
 const updateEnum = async (req, res) => {
   const { enumId, optionValues } = req.body;
   const { label, value } = optionValues;
   const collection = client.db(dbName).collection(collectionName);
-  const response = await collection.find({ enumId })
+  const response = await collection.find({ enumId });
   let dbResponse = {};
   if (response) {
-    dbResponse = await collection.updateOne({ enumId }, { $push: { optionValues: { $each: optionValues } } });
+    dbResponse = await collection.updateOne(
+      { enumId },
+      { $push: { optionValues: { $each: optionValues } } }
+    );
     res.send(JSON.stringify(dbResponse.result));
   }
-}
+};
 
 const connectToDatabase = async () => {
   client = await MongoClient.connect(process.env.MO_URI);
   console.log("Connected to the database");
 };
 
+// API FOR FORM SUBMISSION AND HISTORY PAGE
+//GET all the details to history page
 const findAllDetails = async (req, res) => {
-  const collection = client.db('details_db').collection('details');
+  const collection = client.db("details_db").collection("details");
   const response = await collection.find({}).toArray();
   res.send(JSON.stringify(response));
-
 };
 
+// PUT all the details to Database
 const insertData = async (req, res) => {
-  const { firstname, lastname, middlename, phone, country, loan, gender, marital, education, loanType, employment, account, aadhar } = req.body;
-  const collection = client.db('details_db').collection('details');
+  const {
+    firstname,
+    lastname,
+    middlename,
+    phone,
+    country,
+    loan,
+    gender,
+    marital,
+    education,
+    loanType,
+    employment,
+    account,
+    aadhar,
+  } = req.body;
+  const collection = client.db("details_db").collection("details");
   const data = {
     firstname: firstname,
     lastname: lastname,
@@ -64,14 +87,20 @@ const insertData = async (req, res) => {
     employment: employment,
     loanType: loanType,
     account: account,
-    aadhar: aadhar
-  }
+    aadhar: aadhar,
+  };
 
   const response = await collection.insertOne(data);
   res.send(JSON.stringify(response.result));
-
-}
+};
 
 connectToDatabase();
 
-module.exports = { findAllEnums, connectToDatabase, insertEnums, updateEnum, findAllDetails, insertData };
+module.exports = {
+  findAllEnums,
+  connectToDatabase,
+  insertEnums,
+  updateEnum,
+  findAllDetails,
+  insertData,
+};

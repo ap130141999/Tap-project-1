@@ -3,11 +3,10 @@ require("dotenv").config();
 // const createError = require("http-errors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const cors = require('cors');
+const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const enumRouter = require("./routes/enumRoutes");
-
 
 const app = express();
 
@@ -18,8 +17,7 @@ app.use(express.urlencoded({ extended: false })); //application/x-www-form-urlen
 app.use(cookieParser());
 
 app.use("/enum", enumRouter);
-app.use("/create",enumRouter);
-
+app.use("/create", enumRouter);
 
 // catch 404 and forward to error handler
 // app.use((req, res, next) => {
@@ -42,9 +40,3 @@ app.use((err, req, res, next) => {
 app.listen(3001, () => {
   console.log(`Server is running!`);
 });
-
-
-
-
-
-
