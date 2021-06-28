@@ -6,7 +6,7 @@ const FormButtons = (props) => {
   const { buttonClick } = props;
 
   return (
-    <Form>
+    <Form className="d-flex justify-content-center">
       <Button
         onClick={buttonClick}
         type="submit"
