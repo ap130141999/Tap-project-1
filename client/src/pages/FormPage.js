@@ -49,7 +49,7 @@ const FormPage = () => {
     };
     console.log(bodyPayload, "hi");
     const response = await axios.post(
-      `http://localhost:3001/enum/add`,
+      `http://localhost:3001/enum/addDetails`,
       bodyPayload
     );
   };

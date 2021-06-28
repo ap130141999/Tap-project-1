@@ -15,6 +15,7 @@ const HomePage = () => {
             <Col md="3"></Col>
             <Col md="3" style={{ textAlign: "center" }}>
               <Card
+                className="historyCard"
                 style={{
                   borderRadius: "20px",
                   boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
@@ -51,6 +52,7 @@ const HomePage = () => {
 
             <Col md="3" style={{ textAlign: "center" }}>
               <Card
+                className="historyCard"
                 style={{
                   borderRadius: "20px",
                   boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
