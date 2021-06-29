@@ -14,7 +14,7 @@ const InputFields = (props) => {
   } = props;
 
   return (
-    <Form>
+    <Form data-toggle="validator" >
       <div>
         <FormGroup row>
           <Label for="FirstName" md={2}>
@@ -22,6 +22,7 @@ const InputFields = (props) => {
           </Label>
           <Col md={4}>
             <Input
+              data-error="Bruh, that email address is invalid"
               style={{ backgroundColor: "white" }}
               type="text"
               name="FirstName"

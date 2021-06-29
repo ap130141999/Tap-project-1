@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+// import Snackbar from '@material-ui/core/Snackbar';
+// import Alert from '@material-ui/lab/Alert';
+// import { makeStyles } from '@material-ui/core/styles';
 
 const FormButtons = (props) => {
   const { buttonClick } = props;
+  const [alert, setAlert] = useEffect(false)
+  // const [open, setOpen] = React.useState(false);
 
+  // const buttonClick = () => {
+  //   setOpen(true);
+  // };
+  // const handleClose = (event, reason) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+
+  //   setOpen(false);
+  // };
   return (
     <Form className="d-flex justify-content-center">
       <Button
@@ -28,6 +43,12 @@ const FormButtons = (props) => {
       >
         Submit
       </Button>
+      {/* <Snackbar open={buttonClick} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
+      <Alert severity="success">This is a success message!</Alert> */}
     </Form>
   );
 };

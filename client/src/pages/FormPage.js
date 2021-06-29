@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import axios from "axios";
-import { Container, Col, Row, Card, CardBody } from "reactstrap";
+import { Container, Col, Row, Card, CardBody, Alert, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import { useState } from "react";
 import {
   DropdownSelectGender,
@@ -30,7 +30,9 @@ const FormPage = () => {
   const [marital, setMarital] = useState("");
   const [loanType, setLoanType] = useState("");
 
-  const submitData = async () => {
+  const [alert, setAlert] = useState(false);
+  const submitData = async() => {
+    setAlert(true);
     let bodyPayload = {
       firstname: firstname,
       lastname: lastname,
@@ -52,7 +54,10 @@ const FormPage = () => {
       `http://localhost:3001/enum/addDetails`,
       bodyPayload
     );
+
   };
+  
+  const toggle = () => setAlert(!alert);
 
   const getfirstName = (value) => {
     console.log(value);
@@ -111,13 +116,13 @@ const FormPage = () => {
     <main>
       <Header />
       <Container className="mb-4">
-        <Card style={{ boxShadow: "5px 5px 5px grey", borderRadius: "20px" }}>
-          <CardBody
-            className="text-center "
-            style={{ backgroundColor: "#9d4edd", color: "white" }}
-          >
-            <p> LOAN APPLICATION FORM </p>
-          </CardBody>
+        <Card className="text-center " style={{ boxShadow: "5px 5px 5px grey", backgroundColor: "#9d4edd", color: "white", padding: "10px" }}>
+
+          <h5 style={{
+            textAlign: "center",
+            color: "white",
+          }}> LOAN APPLICATION FORM </h5>
+
         </Card>
       </Container>
       <Container>
@@ -161,8 +166,16 @@ const FormPage = () => {
               <DropdownSelectEducation optionHandler={getEducation} />
             </Col>
           </Row>
-
-          <FormButtons buttonClick={submitData} />
+          <div className="d-flex justify-content-end">
+          <Button  style={{width:"20%"}} color="success" onClick={submitData}>submit</Button>
+          </div>
+          {alert && <Modal isOpen={alert} toggle={toggle} style={{backgroundColor: "#ECECEC",
+            boxShadow: "5px 5px 5px 5px lightgrey"}} >
+            <ModalBody>
+              <h6>Data added successfully</h6>
+              <Button color="success" onClick={toggle}>Close</Button>
+            </ModalBody>
+          </Modal>}
         </Card>
       </Container>
     </main>
@@ -170,3 +183,7 @@ const FormPage = () => {
 };
 
 export default FormPage;
+
+
+// <Modal isOpen={alert}>
+//             Data added Succes</Modal>

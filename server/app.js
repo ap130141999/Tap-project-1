@@ -2,9 +2,9 @@ require("dotenv").config();
 
 // const createError = require("http-errors");
 const express = require("express");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 
 const enumRouter = require("./routes/enumRoutes");
 
@@ -14,7 +14,7 @@ console.log(process.env.MO_URI);
 app.use(cors());
 app.use(express.json()); //application/json
 app.use(express.urlencoded({ extended: false })); //application/x-www-form-urlencoded
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use("/enum", enumRouter);
 app.use("/create", enumRouter);

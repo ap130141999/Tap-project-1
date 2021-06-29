@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div>
       <Header />
-      <linearGradient colors={["#4c66ef", "#3b5998", "#192f6a"]}>
+      {/* <linearGradient colors={["#4c66ef", "#3b5998", "#192f6a"]}> */}
         <Container>
           <Row>
             <Col md="3"></Col>
@@ -84,7 +84,7 @@ const HomePage = () => {
             <Col md="3"></Col>
           </Row>
         </Container>
-      </linearGradient>
+      {/* </linearGradient> */}
     </div>
   );
 };

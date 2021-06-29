@@ -42,16 +42,16 @@ const DynamicTable = (props) => {
       <Header />
       <Container className="mb-4">
         <Card
-          style={{ boxShadow: "5px 5px 5px grey", backgroundColor: "#c77dff" }}
+          style={{ boxShadow: "5px 5px 5px grey", backgroundColor: "#c77dff" , padding: "10px"}}
         >
-          <h1
+          <h5
             style={{
               textAlign: "center",
               color: "white",
             }}
           >
             ENUM TABLE
-          </h1>
+          </h5>
         </Card>
       </Container>
       <Container
