@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from 'react-hook-form';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -38,7 +39,7 @@ const EnumModal = (props) => {
 
   return (
     <div style={{ backgroundColor: "#F6C6EA" }}>
-      <Modal isOpen={showModal} toggle={toggle} style={{ boxShadow: "5px 5px 5px #C77DFF", backgroundColor: "#C77DFF" }} >
+      <Modal isOpen={showModal} toggle={toggle} style={{ boxShadow: "5px 5px 5px #C77DFF", backgroundColor: "#C77DFF", padding:"0" }} >
         <ModalBody style={{ backgroundColor: "#F6C6EA" }}>
           <Table style={{
             background: "#FFFFFF",

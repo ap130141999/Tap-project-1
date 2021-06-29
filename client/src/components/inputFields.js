@@ -28,7 +28,6 @@ const InputFields = (props) => {
               name="FirstName"
               id="FirstName"
               placeholder="Enter your first name"
-              required="required"
               onChange={(event) => sendFirstName(event.target.value)}
             />
           </Col>
