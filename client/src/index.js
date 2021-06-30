@@ -14,9 +14,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/Form" component={FormPage} />
+        <Route exact path="/form" component={FormPage} />
         <Route exact path ="/table" component = {DynamicTable} />
-        <Route exact path ="/HistoryPage" component ={HistoryPage} />
+        <Route exact path ="/historypage" component ={HistoryPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

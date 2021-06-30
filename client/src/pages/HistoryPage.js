@@ -11,6 +11,8 @@ import {
 import axios from "axios";
 import Header from "../components/Header";
 import "../index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {  faAddressCard } from "@fortawesome/free-solid-svg-icons";
 
 const HistoryPage = () => {
   const [cardData, setCardData] = useState([]);
@@ -36,11 +38,15 @@ const HistoryPage = () => {
                   className="historyCard"
                   style={{
                     margin: "20px",
+                    backgroundColor:"#FFF5EB",
                     borderRadius: "20px",
-                    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+                    boxShadow: "0 4px 8px 0 purple"
                   }}
                 >
                   <CardBody>
+                  <div className="text-center">
+                  <FontAwesomeIcon icon={ faAddressCard} color="#5a189a" style={{width: "20%", height: "20%"}}/>
+                  </div>
                     <CardTitle tag="h2">{data.firstname}</CardTitle>
                     <CardText> Middlename : {data.middlename} </CardText>
                     <CardText> LastName : {data.lastname} </CardText>

@@ -56,6 +56,18 @@ const findAllDetails = async (req, res) => {
   res.send(JSON.stringify(response));
 };
 
+// delete the full enum object
+const deleteEnum = async (req, res) => {
+  const { enumId, optionValues } = req.body;
+  const { label, value } = optionValues;
+  const collection = client.db(dbName).collection(collectionName);
+  const response = await collection.find({ enumId })
+  let dbResponse = {};
+  if (response) {
+    dbResponse = await collection.deleteOne({ enumId }, { $push: { optionValues: { $each: optionValues } } });
+    res.send(JSON.stringify(dbResponse.result));
+  }
+}
 // PUT all the details to Database
 const insertData = async (req, res) => {
   const {
@@ -103,4 +115,5 @@ module.exports = {
   updateEnum,
   findAllDetails,
   insertData,
+  deleteEnum
 };

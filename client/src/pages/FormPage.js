@@ -4,21 +4,18 @@ import axios from "axios";
 import { Container, Col, Row, Card, CardBody, Alert, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import { useState } from "react";
 import {
-  DropdownSelectGender,
-  DropdownSelectLoan,
-  DropdownSelectMartial,
-  DropdownSelectEducation,
-  DropdownSelectEmplyoment,
+  DropdownSelect,
 } from "../components/DropDownItems";
-
+import { isEmpty } from "lodash";
 import InputFields from "../components/InputFields.js";
 import FormButtons from "../components/FormButtons.js";
 import Header from "../components/Header.js";
 
+
 const FormPage = () => {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [middlename, setMiddlename] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [middleName, setMiddleName] = useState("");
   const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("");
   const [loan, setLoan] = useState("");
@@ -31,45 +28,76 @@ const FormPage = () => {
   const [loanType, setLoanType] = useState("");
 
   const [alert, setAlert] = useState(false);
-  const submitData = async() => {
-    setAlert(true);
-    let bodyPayload = {
-      firstname: firstname,
-      lastname: lastname,
-      middlename: middlename,
-      phone: phone,
-      country: country,
-      loan: loan,
-      gender: gender,
-      employment: employment,
-      education: education,
-      marital: marital,
-      loanType: loanType,
-      employment: employment,
-      aadhar: aadhar,
-      account: account,
-    };
-    console.log(bodyPayload, "hi");
-    const response = await axios.post(
-      `http://localhost:3001/enum/addDetails`,
-      bodyPayload
-    );
+  const submitData = async () => {
+    const isValid = validateData();
+    if (isValid) {
+      setAlert(true);
+      let bodyPayload = {
+        firstName: firstName,
+        lastName: lastName,
+        middleName: middleName,
+        phone: phone,
+        country: country,
+        loan: loan,
+        gender: gender,
+        employment: employment,
+        education: education,
+        marital: marital,
+        loanType: loanType,
+        aadhar: aadhar,
+        account: account,
+      };
+      console.log(bodyPayload, "hi");
+      const response = await axios.post(
+        `http://localhost:3001/enum/addDetails`,
+        bodyPayload
+      );
+
+    } else {
+      // <Modal isOpen={alert} toggle={toggle} style={{
+      //   backgroundColor: "#ECECEC",
+      //   boxShadow: "5px 5px 5px 5px lightgrey"
+      // }} >
+      //   <ModalBody>
+      //     <h6>Data added successfully</h6>
+      //     <Button color="success" onClick={toggle}>Close</Button>
+      //   </ModalBody>
+      // </Modal>
+      console.log("fill all inputs")
+    }
 
   };
-  
+
   const toggle = () => setAlert(!alert);
 
-  const getfirstName = (value) => {
+  const validateData = () => {
+    const valid = true;
+    valid = !isEmpty(firstName);
+    valid = !isEmpty(lastName);
+    valid = !isEmpty(middleName);
+    valid = !isEmpty(phone);
+    valid = !isEmpty(country);
+    valid = !isEmpty(loan);
+    valid = !isEmpty(gender);
+    valid = !isEmpty(employment);
+    valid = !isEmpty(education);
+    valid = !isEmpty(marital);
+    valid = !isEmpty(loanType);
+    valid = !isEmpty(aadhar);
+    valid = !isEmpty(account);
+    return valid
+  }
+  const getFirstName = (value) => {
     console.log(value);
-    setFirstname(value);
+    setFirstName(value);
   };
   const getMiddleName = (value) => {
     console.log(value);
-    setMiddlename(value);
+    setMiddleName(value);
   };
   const getLastName = (value) => {
     console.log(value);
-    setLastname(value);
+    setLastName(value);
   };
   const getPhone = (value) => {
     console.log(value);
@@ -84,7 +112,7 @@ const FormPage = () => {
     setLoan(value);
   };
 
-  const dropDownHandler = (label) => {
+  const getGender = (label) => {
     console.log("Hi option here", label);
     setGender(label);
   };
@@ -135,7 +163,7 @@ const FormPage = () => {
         >
           <br></br>
           <InputFields
-            sendFirstName={getfirstName}
+            sendFirstName={getFirstName}
             sendMiddleName={getMiddleName}
             sendLastName={getLastName}
             sendPhone={getPhone}
@@ -147,33 +175,29 @@ const FormPage = () => {
 
           <Row>
             <Col md="6">
-              <DropdownSelectGender optionHandler={dropDownHandler} />
-            </Col>
-            <Col md="6">
-              <DropdownSelectLoan optionHandler={getLoanType} />
-            </Col>
-          </Row>
-          <Row>
-            <Col md="6">
-              <DropdownSelectEmplyoment optionHandler={getEmployment} />
-            </Col>
-            <Col md="6">
-              <DropdownSelectMartial optionHandler={getMarital} />
+              <DropdownSelect
+                optionGender={getGender}
+                optionEmployment={getEmployment}
+                optionLoanType={getLoanType}
+                optionMarital={getMarital}
+                optionEducation={getEducation}
+              />
             </Col>
           </Row>
           <Row>
-            <Col md="6">
-              <DropdownSelectEducation optionHandler={getEducation} />
-            </Col>
-          </Row>
+            <Col md="12">
           <div className="d-flex justify-content-end">
           <Button  style={{width:"20%"}} color="success" onClick={submitData}>submit</Button>
           </div>
-          {alert && <Modal isOpen={alert} toggle={toggle} style={{backgroundColor: "#ECECEC",
-            boxShadow: "5px 5px 5px 5px lightgrey"}} >
+          </Col>
+          </Row>
+          {alert && <Modal isOpen={alert} toggle={toggle} style={{
+            backgroundColor: "#ECECEC",
+            boxShadow: "5px 5px 5px 5px lightgrey"
+          }} >
             <ModalBody>
               <h6>Data added successfully</h6>
-              <Button color="success" onClick={toggle}>Close</Button>
+              <Button color="success" onClick={() => { toggle(); window.location.reload(); }} >Close</Button>
             </ModalBody>
           </Modal>}
         </Card>

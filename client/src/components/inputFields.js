@@ -22,7 +22,6 @@ const InputFields = (props) => {
           </Label>
           <Col md={4}>
             <Input
-              data-error="Bruh, that email address is invalid"
               style={{ backgroundColor: "white" }}
               type="text"
               name="FirstName"
@@ -86,7 +85,7 @@ const InputFields = (props) => {
 
       <FormGroup row>
         <Label for="Country" md={2}>
-          <h5> Country:</h5>
+          <h5> Country</h5>
         </Label>
         <Col md={4}>
           <Input
@@ -119,7 +118,7 @@ const InputFields = (props) => {
       <br></br>
       <FormGroup row>
         <Label for="Aadhar number" md={2}>
-          <h5> Aadhar number</h5>
+          <h5> Aadhar Number</h5>
         </Label>
         <Col md={4}>
           <Input

@@ -65,12 +65,13 @@ const DynamicTable = (props) => {
               borderSpacing: "0",
             }}
           >
-            <thead>
-              <tr style={{ backgroundColor: "#5a189a", color: "white" }}>
+           <thead>
+              <tr style={{ backgroundColor: "#5A189A", color: "white" }}>
                 <th>S.NO</th>
                 <th>ENUM ID</th>
                 <th>OPTION VALUES</th>
                 <th>EDIT</th>
+                <th>DELETE</th>
               </tr>
             </thead>
             <tbody>
@@ -89,7 +90,15 @@ const DynamicTable = (props) => {
                         style={{ border: "none", background: "none" }}
                         onClick={() => AddModal(enumId, optionValues)}
                       >
-                        <FontAwesomeIcon icon={faEdit} color="#5a189a" />
+                        <FontAwesomeIcon icon={faEdit} color="#5A189A" />
+                      </Button>
+                    </td>
+                    <td>
+                      <Button
+                        style={{ border: "none", background: "none" }}
+                        onClick={() => AddModal(enumId, optionValues)}
+                      >
+                        <FontAwesomeIcon icon={faEdit} color="#5A189A" />
                       </Button>
                     </td>
                   </tr>
@@ -108,5 +117,16 @@ const DynamicTable = (props) => {
     </>
   );
 };
-
 export default DynamicTable;
+
+
+
+
+
+
+
+
+
+
+
+
